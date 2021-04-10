@@ -10,7 +10,7 @@
   Our app insentivises learning in a way that we have gamefied our app with an engaging game and the student can unlock different perks in the game including more lives per day and higher score on the leaderboard by completing their tasks including submitting their assignments on time, securing good marks in tests (which are verified by teachers portal). The app also helps students stay organized in completing those tasks by letting them have list of all the pending assignments as per their submission deadlines, and the upcoming tests along with their details verified by respective teachers all under one platform.
   
 ## Demo Video Link:
-  <a href="https://youtu.be/dQw4w9WgXcQ">https://youtu.be/dQw4w9WgXcQ</a>
+  <a href="https://youtu.be/r2rqVfCGgGA">https://youtu.be/r2rqVfCGgGA</a>
   
 ## Presentation Link:
   <a href="https://docs.google.com/presentation/d/1iYNTgVvr-KmEG4tz79K3KTzNWP7I05vn44svFoQsoa4/edit?usp=sharing"> ppt link here </a>
