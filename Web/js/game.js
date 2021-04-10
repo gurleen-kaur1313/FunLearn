@@ -1,5 +1,29 @@
 // "use strict";
-var life = 2;
+var life;
+fetch("https://funlearn.herokuapp.com/graphql/", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            Authorization: `JWT ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+            query: `
+        {
+            me{
+              life
+            }
+           
+          }
+        `,
+        }),
+    })
+    .then((res) => res.json())
+    .then((result) => {
+        console.log(result.data);
+        life = result.data.me.life;
+        console.log(life);
+        document.getElementById("life").innerHTML = `Life : ${life} `;
+    });
 console.clear();
 var Stage = /** @class */ (function() {
     function Stage() {
@@ -299,9 +323,11 @@ var Game = /** @class */ (function() {
                 life--;
                 console.log(life);
                 if (life > 0) {
+                    document.getElementById("life").innerHTML = `Life : ${life} `;
                     this.restartGame();
                 } else {
                     alert("no life left");
+                    window.location.href = "home.html";
                 }
 
                 break;
