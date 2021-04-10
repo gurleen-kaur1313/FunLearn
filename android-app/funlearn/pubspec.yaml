@@ -34,8 +34,8 @@ dependencies:
   graphql: ^4.0.0-beta
   firebase_core: ^1.0.2
   firebase_storage: ^8.0.1
-  cloud_firestore: ^1.0.3
   intl: ^0.17.0
+  file_picker: ^3.0.1
 
 dev_dependencies:
   flutter_test:
