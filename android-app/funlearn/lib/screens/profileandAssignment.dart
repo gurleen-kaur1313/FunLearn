@@ -37,6 +37,7 @@ class MainScreen extends StatelessWidget {
   }
 
   Widget assignmentChild(Assignments obj) {
+    String image = (obj.ontime=="Y")?"lib/assets/green.webp":"lib/assets/red.gif";
     return InkWell(
       onTap: () {
         Get.to(MyAssignment(obj: obj));
@@ -57,7 +58,7 @@ class MainScreen extends StatelessWidget {
                 height: 130,
                 width: 130,
                 child: Image.asset(
-                  "lib/assets/black.jpeg",
+                 image,
                   fit: BoxFit.cover,
                 )),
             Container(

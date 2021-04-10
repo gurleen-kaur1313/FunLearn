@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+* {
+    padding: 0%;
+    margin: 0%;
+    scroll-behavior: smooth;
+}
+
+.banner {
+    background-image: url("https://cdn.dribbble.com/users/508588/screenshots/14019921/media/70000da6cbc81422a6140b621ce6a236.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+
+.banner img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.remove {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+nav {
+    background-color: transparent;
+    font-size: 1.3rem;
+}
+
+.navbar a {
+    color: rgb(121 70 123) !important;
+}
+
+#navbarSupportedContent {
+    justify-content: flex-end;
+}
+
+nav ul li a {
+    position: relative;
+    font-weight: 500;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    left: 0%;
+    bottom: 0;
+    height: 0.2rem;
+    background-color: rgb(234 150 165);
+    border-radius: 2rem;
+}
+
+nav ul li a:hover:after {
+    width: 100%;
+    transition: all 0.3s ease-in;
+}
+
+.navbar-brand {
+    font-family: "Dela Gothic One", "cursive";
+    font-size: 1.6rem;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgb(235 229 229);
+    border-color: rgb(241 234 234);
+}
+
+.navbar-toggler {
+    background-color: #f3ecec38;
+}
+
+#intro {
+    color: rgb(53, 52, 52);
+    position: relative;
+    top: 20%;
+    margin: 4%;
+    height: 23rem;
+    width: 20rem;
+    font-family: "Dela Gothic One", "cursive";
+    text-shadow: 3px 2px 0px rgb(0 0 0 / 20%);
+    background-color: rgba(250, 245, 245, 0.609);
+    border-radius: 1.3rem;
+    box-shadow: 2px 4px 10px rgba(59, 54, 54, 0.589);
+    display: grid;
+    place-items: center;
+}
+
+#intro h2 {
+    text-align: center;
+}
+
+#intro .info {
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+#intro #life {
+    margin-left: 1%;
+}
+
+#intro button {
+    background: #888888;
+    font-size: 1.3rem;
+    font-family: "Dela Gothic One";
+    color: #edeef0;
+}
+
+#intro .btn:hover {
+    cursor: pointer;
+    background-color: rgb(204, 204, 197) !important;
+    color: slategray;
+}
+
+#intro .fa-heart {
+    font-size: 1.5rem;
+}
+
+.mid {
+    display: flex;
+    margin-top: 7%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-family: "Dela Gothic One", "cursive";
+    text-shadow: 3px 2px 0px rgb(0 0 0 / 20%);
+}
+
+.leaderboard {
+    width: 60%;
+    padding-right: 1%;
+    /* align-items: center; */
+}
+
+.leaderboard table {
+    margin-top: 5%;
+    margin-right: 1%;
+}
+
+.leaderboard table thead {
+    background-color: rgb(19, 18, 18);
+    color: whitesmoke;
+}
+
+.files {
+    width: 40%;
+    padding: 0% 1%;
+}
+
+.files .data {
+    display: grid;
+    justify-content: center;
+}
+
+.files table thead {
+    background-color: rgb(66, 61, 61);
+    color: whitesmoke;
+}
+
+.files ul {
+    background: #94939a;
+    margin: 2%;
+    border-radius: 1rem;
+}
+
+.files ul a {
+    color: whitesmoke;
+    font-family: system-ui;
+    font-weight: 700;
+}
+
+.files ul li a:hover {
+    cursor: pointer;
+    background-color: gray;
+}
+
+footer {
+    margin-top: 3%;
+    width: 100%;
+    height: 2.5rem;
+    background-color: rgb(126 101 133 / 87%);
+    color: snow;
+    display: grid;
+    place-items: center;
+    font-size: 1.3rem;
+    font-family: system-ui;
+    font-weight: 600;
+}
