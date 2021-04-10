@@ -101,19 +101,6 @@ class _MyAssignmentState extends State<MyAssignment> {
                         setState(() {
                           name = file.path.substring(52);
                         });
-                        String fileName = basename(file.path);
-                        var firebaseStorageRef = FirebaseStorage.instance
-                            .ref()
-                            .child('uploads/$fileName');
-                        var uploadTask = firebaseStorageRef.putFile(file);
-                        var taskSnapshot = await uploadTask.whenComplete(() {
-                          print("Done");
-                        });
-                        taskSnapshot.ref.getDownloadURL().then(
-                          (value) {
-                            widget.obj.submissionurl = value;
-                          },
-                        );
                       } else {
                         setState(() {
                           name = "Not selected";
@@ -121,7 +108,7 @@ class _MyAssignmentState extends State<MyAssignment> {
                       }
                     },
                     child: BoldText(
-                      text: "Upload file",
+                      text: "Choose file",
                       color: Colors.black,
                       size: 16,
                     )),
@@ -134,7 +121,35 @@ class _MyAssignmentState extends State<MyAssignment> {
                   child: BoldText(text: "File : $name", size: 20),
                 )
               : SizedBox(),
-              
+          Container(
+            margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+            child: TextButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.cyan),
+                ),
+                onPressed: () async {
+                  String fileName = basename(file.path);
+                        var firebaseStorageRef = FirebaseStorage.instance
+                            .ref()
+                            .child('uploads/$fileName');
+                        var uploadTask = firebaseStorageRef.putFile(file);
+                        var taskSnapshot = await uploadTask.whenComplete(() {
+                          print("Done");
+                        });
+                        taskSnapshot.ref.getDownloadURL().then(
+                          (value) {
+                            widget.obj.submissionurl = value;
+                          },
+                          await uploadA(widget.obj.id,widget.obj.submissionurl);
+                        );
+                },
+                child: BoldText(
+                  text: "Submit File",
+                  color: Colors.black,
+                  size: 16,
+                )),
+          ),
         ],
       ),
     );

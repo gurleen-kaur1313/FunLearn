@@ -1,7 +1,7 @@
 import 'package:funlearn/server/login_gql.dart';
 import "package:graphql/client.dart";
 
-Future<bool> getTest() async {
+Future<bool> uploadA(String id, String url) async {
   HttpLink _httpLink = HttpLink(
     'https://funlearn.herokuapp.com/graphql/',
   );
@@ -18,7 +18,7 @@ Future<bool> getTest() async {
 
   String queryString = """
 mutation{
-  updateAssignment(id:"" , url:""){
+  updateAssignment(id: $id , url: $url){
     __typename
   }
 }
