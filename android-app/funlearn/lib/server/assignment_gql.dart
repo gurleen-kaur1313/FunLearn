@@ -50,6 +50,7 @@ Future<bool> getAssignment() async {
   for (var assdata in ass) {
     pendingA++;
     Assignments ass = new Assignments();
+    ass.id = assdata["id"];
     ass.name = assdata["name"];
     ass.subject = assdata["subject"];
     ass.submitted = assdata["submitted"];

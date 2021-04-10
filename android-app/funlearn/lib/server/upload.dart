@@ -18,7 +18,7 @@ Future<bool> uploadAssignment(String id, String url) async {
 
   String queryString = """
 mutation{
-  updateAssignment(id: $id , url: $url){
+  updateAssignment(id: "$id" , url: "$url"){
     __typename
   }
 }
