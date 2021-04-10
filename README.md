@@ -34,4 +34,6 @@ Team Name: __R*R__
 * [Harmanjit Singh](https://github.com/Harmanjit14)
 * [Mahira Modi](https://github.com/Mahiramodi)
 
+### Made at:
+<a href="https://hack36.com"> <img src="http://bit.ly/BuiltAtHack36" height=20px> </a>
 
