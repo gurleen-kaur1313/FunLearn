@@ -32,6 +32,7 @@
 Team Name: __R*R__
 
 * [Harmanjit Singh](https://github.com/Harmanjit14)
+* [Gurleen Kaur](https://github.com/gurleen-kaur1313)
 * [Mahira Modi](https://github.com/Mahiramodi)
 
 ### Made at:
