@@ -37,7 +37,8 @@ class MainScreen extends StatelessWidget {
   }
 
   Widget assignmentChild(Assignments obj) {
-    String image = (obj.ontime=="Y")?"lib/assets/green.webp":"lib/assets/red.gif";
+    String image =
+        (obj.ontime == "Y") ? "lib/assets/green.webp" : "lib/assets/red.gif";
     return InkWell(
       onTap: () {
         Get.to(MyAssignment(obj: obj));
@@ -58,7 +59,7 @@ class MainScreen extends StatelessWidget {
                 height: 130,
                 width: 130,
                 child: Image.asset(
-                 image,
+                  image,
                   fit: BoxFit.cover,
                 )),
             Container(
@@ -68,22 +69,10 @@ class MainScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  RegularText(
+                  BoldText(
                     text: "${obj.name}",
-                    color: Colors.white,
-                    size: 15,
-                  ),
-                  SizedBox(height: 4),
-                  BoldText(
-                    text: "${obj.duedate.substring(0, 10)}",
-                    color: Colors.white,
-                    size: 12,
-                  ),
-                  SizedBox(height: 4),
-                  BoldText(
-                    text: "Total marks : ${obj.totalmarks}",
-                    color: Colors.white,
-                    size: 12,
+                    color: (obj.ontime == "Y") ? Colors.black : Colors.white,
+                    size: 16,
                   ),
                 ],
               ),
