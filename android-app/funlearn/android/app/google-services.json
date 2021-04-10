@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "243932855350",
+    "project_id": "funlearn-game",
+    "storage_bucket": "funlearn-game.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243932855350:android:88fe64b7a51d668a6a2c97",
+        "android_client_info": {
+          "package_name": "com.example.funlearn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243932855350-nuecm9o1m065g6b8m6avvd7ldkiqbue0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4OaeO1gkqC3ZSwxr6jBQOdimL0NimaP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243932855350-nuecm9o1m065g6b8m6avvd7ldkiqbue0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
