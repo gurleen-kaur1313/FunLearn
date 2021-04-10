@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:path/path.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:funlearn/constants/text.dart';
@@ -18,6 +18,7 @@ class MyAssignment extends StatefulWidget {
 class _MyAssignmentState extends State<MyAssignment> {
   final storage = FirebaseStorage.instance;
   bool clicked = false;
+  String name = "Not selected";
 
   @override
   Widget build(BuildContext context) {
@@ -87,11 +88,36 @@ class _MyAssignmentState extends State<MyAssignment> {
                       setState(() {
                         clicked = true;
                       });
-                      FilePickerResult result =
-                          await FilePicker.platform.pickFiles();
+                      FilePickerResult result = await FilePicker.platform
+                          .pickFiles(type: FileType.custom, allowedExtensions: [
+                        'pdf',
+                        'docx',
+                        'txt',
+                        'docs'
+                      ]);
                       if (result != null) {
                         File file = File(result.files.single.path);
-                      } else {}
+                        setState(() {
+                          name = file.path.substring(52);
+                        });
+                        String fileName = basename(file.path);
+                        var firebaseStorageRef = FirebaseStorage.instance
+                            .ref()
+                            .child('uploads/$fileName');
+                        var uploadTask = firebaseStorageRef.putFile(file);
+                        var taskSnapshot = await uploadTask.whenComplete(() {
+                          print("Done");
+                        });
+                        taskSnapshot.ref.getDownloadURL().then(
+                          (value) {
+                            widget.obj.submissionurl = value;
+                          },
+                        );
+                      } else {
+                        setState(() {
+                          name = "Not selected";
+                        });
+                      }
                     },
                     child: BoldText(
                       text: "Upload file",
@@ -103,8 +129,8 @@ class _MyAssignmentState extends State<MyAssignment> {
           ),
           (clicked)
               ? Container(
-                margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                  child: BoldText(text: "File : ", size: 20),
+                  margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  child: BoldText(text: "File : $name", size: 20),
                 )
               : SizedBox(),
         ],
