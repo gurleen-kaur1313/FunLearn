@@ -19,6 +19,7 @@ class _MyAssignmentState extends State<MyAssignment> {
   final storage = FirebaseStorage.instance;
   bool clicked = false;
   String name = "Not selected";
+  File file;
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +97,7 @@ class _MyAssignmentState extends State<MyAssignment> {
                         'docs'
                       ]);
                       if (result != null) {
-                        File file = File(result.files.single.path);
+                        file = File(result.files.single.path);
                         setState(() {
                           name = file.path.substring(52);
                         });
@@ -133,6 +134,7 @@ class _MyAssignmentState extends State<MyAssignment> {
                   child: BoldText(text: "File : $name", size: 20),
                 )
               : SizedBox(),
+              
         ],
       ),
     );
