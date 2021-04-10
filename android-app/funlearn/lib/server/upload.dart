@@ -1,7 +1,7 @@
 import 'package:funlearn/server/login_gql.dart';
 import "package:graphql/client.dart";
 
-Future<bool> uploadA(String id, String url) async {
+Future<bool> uploadAssignment(String id, String url) async {
   HttpLink _httpLink = HttpLink(
     'https://funlearn.herokuapp.com/graphql/',
   );

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:funlearn/constants/text.dart';
 import 'package:funlearn/model/assignments.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:funlearn/server/upload.dart';
 
 class MyAssignment extends StatefulWidget {
   final Assignments obj;
@@ -130,19 +131,19 @@ class _MyAssignmentState extends State<MyAssignment> {
                 ),
                 onPressed: () async {
                   String fileName = basename(file.path);
-                        var firebaseStorageRef = FirebaseStorage.instance
-                            .ref()
-                            .child('uploads/$fileName');
-                        var uploadTask = firebaseStorageRef.putFile(file);
-                        var taskSnapshot = await uploadTask.whenComplete(() {
-                          print("Done");
-                        });
-                        taskSnapshot.ref.getDownloadURL().then(
-                          (value) {
-                            widget.obj.submissionurl = value;
-                          },
-                          await uploadA(widget.obj.id,widget.obj.submissionurl);
-                        );
+                  var firebaseStorageRef =
+                      FirebaseStorage.instance.ref().child('uploads/$fileName');
+                  var uploadTask = firebaseStorageRef.putFile(file);
+                  var taskSnapshot = await uploadTask.whenComplete(() {
+                    print("Done");
+                  });
+                  taskSnapshot.ref.getDownloadURL().then(
+                    (value) async {
+                      widget.obj.submissionurl = value;
+                      await uploadAssignment(
+                          widget.obj.id, widget.obj.submissionurl);
+                    },
+                  );
                 },
                 child: BoldText(
                   text: "Submit File",
