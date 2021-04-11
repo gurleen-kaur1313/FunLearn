@@ -17,8 +17,7 @@ fetchURL = (query, variable) => {
         }),
     }).then((res) => res.json());
 };
-
-document.getElementById("Tests").classList.add("remove");
+document.getElementById("user").classList.add("remove");
 fetchURL(`{
     me{
       name,
