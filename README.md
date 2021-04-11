@@ -3,7 +3,7 @@
 <p align="center">
 </p>
 
-<a href="https://hack36.com"> <img src="http://bit.ly/BuiltAtHack36" height=20px> </a>
+
 
 
 ## Introduction:
@@ -35,6 +35,5 @@ Team Name: __R*R__
 * [Gurleen Kaur](https://github.com/gurleen-kaur1313)
 * [Mahira Modi](https://github.com/Mahiramodi)
 
-### Made at:
-<a href="https://hack36.com"> <img src="http://bit.ly/BuiltAtHack36" height=20px> </a>
+
 
