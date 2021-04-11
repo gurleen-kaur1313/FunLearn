@@ -341,7 +341,9 @@ var Game = /** @class */ (function() {
                               updateUser(life:$life score:$score gameScore:$gameScore){
                                 
                                 update{
-                                  life
+                                  life,
+                                  score,
+                                  gameScore
                                 }
                               }
                             }`,
