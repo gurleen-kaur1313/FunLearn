@@ -325,9 +325,33 @@ var Game = /** @class */ (function() {
                 console.log(life);
                 if (life > 0) {
                     document.getElementById("life").innerHTML = `Life : ${life} `;
+
                     this.restartGame();
                 } else {
                     alert("no life left");
+                    fetch("https://funlearn.herokuapp.com/graphql/", {
+                            method: "POST",
+                            headers: {
+                                "content-type": "application/json",
+                                Authorization: `JWT ${localStorage.getItem("token")}`,
+                            },
+                            body: JSON.stringify({
+                                query: `mutation Update($life:Int! $score:Int! $gameScore:Int!)
+                            {
+                              updateUser(life:$life score:$score gameScore:$gameScore){
+                                
+                                update{
+                                  life
+                                }
+                              }
+                            }`,
+                                variables: { life: life, score: score, gameScore: score },
+                            }),
+                        })
+                        .then((res) => res.json())
+                        .then((result) => {
+                            console.log(result.data);
+                        });
                     window.location.href = "home.html";
                 }
 
@@ -337,6 +361,8 @@ var Game = /** @class */ (function() {
     Game.prototype.startGame = function() {
         if (this.state != this.STATES.PLAYING) {
             this.scoreContainer.innerHTML = "0";
+            score = this.scoreContainer.innerHTML;
+            console.log(score);
             this.updateState(this.STATES.PLAYING);
             this.addBlock();
         }
