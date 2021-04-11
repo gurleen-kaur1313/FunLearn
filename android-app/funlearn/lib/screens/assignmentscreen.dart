@@ -134,9 +134,7 @@ class _MyAssignmentState extends State<MyAssignment> {
                   var firebaseStorageRef =
                       FirebaseStorage.instance.ref().child('uploads/$fileName');
                   var uploadTask = firebaseStorageRef.putFile(file);
-                  var taskSnapshot = await uploadTask.whenComplete(() {
-                    print("Done");
-                  });
+                  var taskSnapshot = await uploadTask.whenComplete(() {});
                   taskSnapshot.ref.getDownloadURL().then(
                     (value) async {
                       widget.obj.submissionurl = value;
