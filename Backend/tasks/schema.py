@@ -33,7 +33,7 @@ class Query(graphene.ObjectType):
         u = info.context.user
         if u.is_anonymous:
             raise GraphQLError("Not Logged In!")
-        return Test.objects.filter(student=u).order_by("-added")
+        return Test.objects.all().order_by("-added")
 
 
 class UpdateAssignment(graphene.Mutation):
