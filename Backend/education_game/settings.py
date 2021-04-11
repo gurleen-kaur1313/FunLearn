@@ -29,7 +29,7 @@ SECRET_KEY = str(os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','funlearn.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'funlearn.herokuapp.com']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -37,6 +37,7 @@ CORS_ORIGIN_WHITELIST = (
     'https://127.0.0.1',
     'https://localhost',
     'https://funlearn.herokuapp.com',
+    'https://funlearn-game.web.app',
 )
 
 CORS_ALLOW_METHODS = [
@@ -47,7 +48,6 @@ CORS_ALLOW_METHODS = [
     'POST',
     'PUT',
 ]
-
 
 
 CORS_ALLOW_HEADERS = [
@@ -61,9 +61,6 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
-
-# Application definition
-
 
 
 INSTALLED_APPS = [
@@ -79,6 +76,7 @@ INSTALLED_APPS = [
     'userProfile',
     'tasks',
 ]
+
 
 GRAPHENE = {
     'SCHEMA': 'education_game.schema.schema',
@@ -100,6 +98,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 AUTHENTICATION_BACKENDS = [
     'graphql_jwt.backends.JSONWebTokenBackend',
     'django.contrib.auth.backends.ModelBackend',
@@ -107,6 +106,7 @@ AUTHENTICATION_BACKENDS = [
 
 
 ROOT_URLCONF = 'education_game.urls'
+
 
 TEMPLATES = [
     {
@@ -124,11 +124,9 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'education_game.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -137,13 +135,12 @@ DATABASES = {
     }
 }
 
+
 db_from_env = dj_database_url.config()
+
 
 DATABASES['default'].update(db_from_env)
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
