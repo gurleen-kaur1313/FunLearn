@@ -48,6 +48,8 @@ CORS_ALLOW_METHODS = [
     'PUT',
 ]
 
+
+
 CORS_ALLOW_HEADERS = [
     'accept',
     'accept-encoding',
@@ -61,6 +63,8 @@ CORS_ALLOW_HEADERS = [
 ]
 
 # Application definition
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
