@@ -28,7 +28,6 @@
 * [Harmanjit Singh](https://github.com/Harmanjit14)
 * [Gurleen Kaur](https://github.com/gurleen-kaur1313)
 * [Mahira Modi](https://github.com/Mahiramodi)
-* [Kunal Khullar](https://github.com/Kunal-Khullar)
 
 
 
