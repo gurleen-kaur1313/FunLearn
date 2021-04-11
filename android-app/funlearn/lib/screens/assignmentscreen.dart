@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +18,86 @@ class MyAssignment extends StatefulWidget {
   _MyAssignmentState createState() => _MyAssignmentState();
 }
 
+class ButtonUpload extends GetxController {
+  RxInt buttonState = 0.obs;
+}
+
 class _MyAssignmentState extends State<MyAssignment> {
   final storage = FirebaseStorage.instance;
   bool clicked = false;
   String name = "Not selected";
   File file;
+  final btnState = Get.put(ButtonUpload());
+  Widget uploadChild() {
+    switch (btnState.buttonState.value) {
+      case 0:
+        {
+          return Container(
+            child: BoldText(text: "Submit File", color: Colors.white, size: 20),
+          );
+        }
+        break;
+      case 1:
+        {
+          return SpinKitDoubleBounce(
+            color: Colors.white,
+            size: 40.0,
+          );
+        }
+        break;
+      case 2:
+        {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.verified,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 7,
+              ),
+              Text(
+                "Uploaded!",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700),
+              ),
+            ],
+          );
+        }
+        break;
+      case 3:
+        {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.error, color: Colors.white),
+              SizedBox(
+                width: 7,
+              ),
+              Text(
+                "Upload Failed!",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700),
+              ),
+            ],
+          );
+        }
+        break;
+      default:
+        {
+          return Text(
+            "Upload file!",
+            style: TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+          );
+        }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -125,31 +202,31 @@ class _MyAssignmentState extends State<MyAssignment> {
           Container(
             margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
             child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.green),
-                ),
-                onPressed: () async {
-                  String fileName = basename(file.path);
-                  var firebaseStorageRef =
-                      FirebaseStorage.instance.ref().child('uploads/$fileName');
-                  var uploadTask = firebaseStorageRef.putFile(file);
-                  var taskSnapshot = await uploadTask.whenComplete(() {
-                    print("Done");
-                  });
-                  taskSnapshot.ref.getDownloadURL().then(
-                    (value) async {
-                      widget.obj.submissionurl = value;
-                      await uploadAssignment(
-                          widget.obj.id, widget.obj.submissionurl);
-                    },
-                  );
-                },
-                child: BoldText(
-                  text: "Submit File",
-                  color: Colors.black,
-                  size: 16,
-                )),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+              ),
+              onPressed: () async {
+                setState(() {
+                  btnState.buttonState.value = 1;
+                });
+                String fileName = basename(file.path);
+                var firebaseStorageRef =
+                    FirebaseStorage.instance.ref().child('uploads/$fileName');
+                var uploadTask = firebaseStorageRef.putFile(file);
+                var taskSnapshot = await uploadTask.whenComplete(() {});
+                taskSnapshot.ref.getDownloadURL().then(
+                  (value) async {
+                    widget.obj.submissionurl = value;
+                    await uploadAssignment(
+                        widget.obj.id, widget.obj.submissionurl);
+                  },
+                );
+                setState(() {
+                  btnState.buttonState.value = 2;
+                });
+              },
+              child: uploadChild(),
+            ),
           ),
         ],
       ),
