@@ -127,7 +127,7 @@ class _MyAssignmentState extends State<MyAssignment> {
             child: TextButton(
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.cyan),
+                      MaterialStateProperty.all<Color>(Colors.green),
                 ),
                 onPressed: () async {
                   String fileName = basename(file.path);
