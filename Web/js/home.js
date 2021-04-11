@@ -17,11 +17,10 @@ fetchURL = (query, variable) => {
         }),
     }).then((res) => res.json());
 };
-
 document.getElementById("Tests").classList.add("remove");
 fetchURL(`{
     me{
-      name,
+      name,  
       email,
       score,
       life
@@ -49,7 +48,7 @@ fetchURL(`{
             <td>${i + 1}</td>
             <td>${element.subject}</td>
             <td>${element.name}</td>
-            <td>${element.score}</td>
+            <td>${element.marksobtained}</td>
             <td>${element.duedate}</td>
             </tr>
               `;
@@ -69,7 +68,7 @@ fetchURL(`{
     result.data.leaderboard.forEach((element, i) => {
         document.getElementById("lboard").innerHTML += `
           <tr>
-            <td>${i}</td>
+            <td>${i + 1}</td>
             <td>${element.name}</td>
             <td>${element.score}</td>
             <td>${element.life}</td>
@@ -83,6 +82,7 @@ const showTest = () => {
     document.getElementById("Assignments").classList.add("remove");
     document.getElementById("Assignments").classList.remove("show");
     document.getElementById("Tests").classList.add("show");
+    document.getElementById("Testtable").innerHTML = "";
     fetchURL(`{
         mtT{
          subject,
@@ -106,7 +106,8 @@ const showTest = () => {
 };
 
 const showAss = () => {
-    var i = 1;
+    document.getElementById("Asstable").innerHTML = "";
+
     fetchURL(`{
         myA{
          subject,
@@ -116,13 +117,13 @@ const showAss = () => {
        } 
        }`).then((result) => {
         console.log(result.data);
-        result.data.myA.forEach((element) => {
+        result.data.myA.forEach((element, i) => {
             document.getElementById("Asstable").innerHTML += `
               <tr>
-            <td>${i}</td>
+            <td>${i + 1}</td>
             <td>${element.subject}</td>
             <td>${element.name}</td>
-            <td>${element.score}</td>
+            <td>${element.marksobtained}</td>
             <td>${element.duedate}</td>
             </tr>
               `;

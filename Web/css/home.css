@@ -80,9 +80,10 @@ nav ul li a:hover:after {
     color: rgb(53, 52, 52);
     position: relative;
     top: 20%;
-    margin: 4%;
+    left: 35%;
+    /* margin: 4%; */
     height: 23rem;
-    width: 20rem;
+    width: 22rem;
     font-family: "Dela Gothic One", "cursive";
     text-shadow: 3px 2px 0px rgb(0 0 0 / 20%);
     background-color: rgba(250, 245, 245, 0.609);
