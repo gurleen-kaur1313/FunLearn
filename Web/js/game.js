@@ -1,5 +1,6 @@
 // "use strict";
 var life;
+var score, gameScore;
 fetch("https://funlearn.herokuapp.com/graphql/", {
         method: "POST",
         headers: {
